@@ -55,6 +55,8 @@
 			this.radioButton_java = new System.Windows.Forms.RadioButton();
 			this.radioButton_dotnet = new System.Windows.Forms.RadioButton();
 			this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+			this.label1 = new System.Windows.Forms.Label();
+			this.textBox_group = new System.Windows.Forms.TextBox();
 			this.panel1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -91,7 +93,7 @@
 			// label3
 			// 
 			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(4, 3);
+			this.label3.Location = new System.Drawing.Point(4, 4);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(35, 17);
 			this.label3.TabIndex = 45;
@@ -315,9 +317,29 @@
 			this.linkLabel1.TextAlign = System.Drawing.ContentAlignment.TopRight;
 			this.linkLabel1.Click += new System.EventHandler(this.linkLabel1_Click);
 			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Location = new System.Drawing.Point(430, 5);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(35, 17);
+			this.label1.TabIndex = 52;
+			this.label1.Text = "类别:";
+			// 
+			// textBox_group
+			// 
+			this.textBox_group.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.textBox_group.Location = new System.Drawing.Point(481, 3);
+			this.textBox_group.Name = "textBox_group";
+			this.textBox_group.Size = new System.Drawing.Size(240, 23);
+			this.textBox_group.TabIndex = 53;
+			// 
 			// HslCertificateControl
 			// 
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+			this.Controls.Add(this.textBox_group);
+			this.Controls.Add(this.label1);
 			this.Controls.Add(this.linkLabel1);
 			this.Controls.Add(this.panel1);
 			this.Controls.Add(this.label14);
@@ -383,5 +405,7 @@
 		private System.Windows.Forms.RadioButton radioButton_java;
 		private System.Windows.Forms.RadioButton radioButton_dotnet;
 		private System.Windows.Forms.LinkLabel linkLabel1;
+		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.TextBox textBox_group;
 	}
 }

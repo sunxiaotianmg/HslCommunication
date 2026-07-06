@@ -317,6 +317,41 @@ namespace HslCommunicationDemo.HslDebug
 
 			if (code == 0)
 			{
+				if (string.IsNullOrEmpty( textBox5.Text ) && checkBox_auto_return.Checked && this.ReturnAutoSeq && this.packetMessages?.Count > 0)
+				{
+					// 自动返回数据列表的逻辑
+					if (session.AutoReturnIndex >= this.packetMessages.Count) session.AutoReturnIndex = this.packetMessages.Count - 1;
+					string sendText = this.packetMessages[session.AutoReturnIndex].Message;
+					session.AutoReturnIndex++;
+
+					if (System.Text.RegularExpressions.Regex.IsMatch( sendText, @"<sleep=[0-9]+>" ))
+					{
+						string[] lines = System.Text.RegularExpressions.Regex.Split( sendText, @"<sleep=[0-9]+>" );
+						if (lines == null) return;
+						for (int i = 0; i < lines.Length; i++)
+						{
+							string str = lines[i];
+							if (string.IsNullOrEmpty( str )) continue;
+							if (System.Text.RegularExpressions.Regex.IsMatch( str, @"^<sleep=[0-9]+>" ))
+							{
+								int time = Convert.ToInt32( System.Text.RegularExpressions.Regex.Match( str, @"[0-9]+" ).Value );
+								if (time > 0) Thread.Sleep( time );
+							}
+							else
+							{
+								SendTextInfo( str );
+							}
+						}
+					}
+					else
+					{
+						SendTextInfo( sendText );
+					}
+					Interlocked.Increment( ref this.sendTick );
+					label_send_tick.Text = "S-Tick:" + this.sendTick.ToString( );
+
+					return;
+				}
 				if (checkBox_auto_return.Checked) button_send.PerformClick( );
 			}
 			else if (code == 2)
@@ -455,7 +490,7 @@ namespace HslCommunicationDemo.HslDebug
 
 		private void linkLabel1_LinkClicked( object sender, LinkLabelLinkClickedEventArgs e )
 		{
-			using (FormPacketMessage form = new FormPacketMessage( this.packetMessages ))
+			using (FormPacketMessage form = new FormPacketMessage( this.packetMessages, this.ReturnAutoSeq ))
 			{
 				if (form.ShowDialog( ) == DialogResult.OK)
 				{
@@ -464,6 +499,7 @@ namespace HslCommunicationDemo.HslDebug
 						this.packetMessages = form.PacketMessages;
 						linkLabel1.Text = string.Format( GetLinkLabelPacketMessageText( ), this.packetMessages.Count );
 
+						this.ReturnAutoSeq = form.ReturnAutoSeq;
 						this.listBox1.DataSource = packetMessages.ToArray( );
 					}
 				}
@@ -502,6 +538,7 @@ namespace HslCommunicationDemo.HslDebug
 			Interlocked.Increment( ref this.sendTick );
 			label_send_tick.Text = "S-Tick:" + this.sendTick.ToString( );
 		}
+
 
 		private void SendTextInfo( string text )
 		{
@@ -599,13 +636,14 @@ namespace HslCommunicationDemo.HslDebug
 				packetMessageItem.LoadByXmlElement( item );
 				this.packetMessages.Add( packetMessageItem );
 			}
-
+			this.ReturnAutoSeq = HslFormContent.GetXmlValue( element, "ReturnAutoSeq", false, bool.Parse );
 			linkLabel1.Text = string.Format( GetLinkLabelPacketMessageText( ), this.packetMessages.Count );
 			this.listBox1.DataSource = packetMessages.ToArray( );
 		}
 
 		public void SaveXml( XElement element )
 		{
+			element.SetAttributeValue( "ReturnAutoSeq", this.ReturnAutoSeq );
 			if (this.packetMessages?.Count > 0)
 			{
 				foreach (var item in this.packetMessages)
@@ -631,6 +669,7 @@ namespace HslCommunicationDemo.HslDebug
 		private long recvCount = 0;
 		private long sendTick = 0;
 		private long recvTick = 0;
+		private bool ReturnAutoSeq = false;
 
 		#endregion
 

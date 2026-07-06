@@ -100,6 +100,7 @@ namespace HslCommunicationDemo
 
 					// 设置代码示例
 					this.userControlReadWriteDevice1.SetDeviceVariableName( DemoUtils.PlcDeviceName );
+					this.codeExampleControl.SetCodeText( siemensTcpNet );
 
 					// 浏览节点的控件
 					siemensS7PlusControl.SetDevice( siemensTcpNet, "" );

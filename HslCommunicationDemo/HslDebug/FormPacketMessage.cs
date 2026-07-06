@@ -13,10 +13,12 @@ namespace HslCommunicationDemo.HslDebug
 {
 	public partial class FormPacketMessage : System.Windows.Forms.Form
 	{
-		public FormPacketMessage( List<PacketMessageItem> list )
+		public FormPacketMessage( List<PacketMessageItem> list, bool returnAutoSeq = false )
 		{
 			InitializeComponent( );
 			packetMessages = list;
+			ReturnAutoSeq = returnAutoSeq;
+			checkBox1.Checked = returnAutoSeq;
 		}
 
 		private void FormPacketMessage_Load( object sender, EventArgs e )
@@ -72,6 +74,7 @@ namespace HslCommunicationDemo.HslDebug
 		}
 
 		public List<PacketMessageItem> PacketMessages { get; set; }
+		public bool ReturnAutoSeq { get; set; } = false;
 
 		private List<PacketMessageItem> packetMessages;
 
@@ -92,6 +95,7 @@ namespace HslCommunicationDemo.HslDebug
 			}
 
 			PacketMessages = list;
+			ReturnAutoSeq = checkBox1.Checked;
 			DialogResult = DialogResult.OK;
 		}
 

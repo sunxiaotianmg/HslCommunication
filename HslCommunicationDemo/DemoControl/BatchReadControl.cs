@@ -766,7 +766,15 @@ namespace HslCommunicationDemo.DemoControl
 			}
 
 			DateTime start = DateTime.Now;
-			OperateResult write = readWriteNet.Write( textBox_address.Text, buffer );
+			OperateResult write = null;
+			if (this.writeWordRandom != null && textBox_address.Text.Contains( ";" ))
+			{
+				write = this.writeWordRandom.Invoke( textBox_address.Text.Split( new char[] { ';' } ), buffer );
+			}
+			else
+			{
+				write = readWriteNet.Write( textBox_address.Text, buffer );
+			}
 
 			string timeCount = (DateTime.Now - start).TotalMilliseconds.ToString( "F0" );
 			label2.Text = (Program.Language == 1 ? "耗时：" : "TimeCount: ") + timeCount + " ms";
@@ -876,6 +884,18 @@ namespace HslCommunicationDemo.DemoControl
 		}
 
 		/// <summary>
+		/// 设置随机字写入的方式
+		/// </summary>
+		/// <param name="write"></param>
+		/// <param name="tips"></param>
+		public void SetWriteWordRandom( Func<string[], byte[], OperateResult> write, string tips )
+		{
+			this.writeWordRandom = write;
+			//this.buttonTips3 = (Program.Language == 1 ? "随机字写入，输入多个地址，';'间隔，例如：" : "Random word writing, enter multiple address, ';'Intervals, for example:") + tips;
+		}
+
+
+		/// <summary>
 		/// 将当前的控件设置为报文读取的方式
 		/// </summary>
 		/// <param name="read">报文读取的方法</param>
@@ -968,6 +988,7 @@ namespace HslCommunicationDemo.DemoControl
 		private bool isSourceReadMode = false;
 		private Func<string[], ushort[], OperateResult<byte[]>> readRandom;
 		private Func<string[], OperateResult<byte[]>> readWordRandom;
+		private Func<string[], byte[], OperateResult> writeWordRandom;
 		private DeviceCommunication readWriteNet;
 		private byte[] buffer;
 		private int lineRenderCount = -1;

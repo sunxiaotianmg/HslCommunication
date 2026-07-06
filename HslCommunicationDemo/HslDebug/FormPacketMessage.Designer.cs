@@ -34,6 +34,7 @@
 			this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.button1 = new System.Windows.Forms.Button();
+			this.checkBox1 = new System.Windows.Forms.CheckBox();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -87,10 +88,21 @@
 			this.button1.UseVisualStyleBackColor = true;
 			this.button1.Click += new System.EventHandler(this.button1_Click);
 			// 
+			// checkBox1
+			// 
+			this.checkBox1.AutoSize = true;
+			this.checkBox1.Location = new System.Drawing.Point(10, 444);
+			this.checkBox1.Name = "checkBox1";
+			this.checkBox1.Size = new System.Drawing.Size(219, 21);
+			this.checkBox1.TabIndex = 2;
+			this.checkBox1.Text = "顺序返回 (仅在自动返回模式下生效)";
+			this.checkBox1.UseVisualStyleBackColor = true;
+			// 
 			// FormPacketMessage
 			// 
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
 			this.ClientSize = new System.Drawing.Size(914, 481);
+			this.Controls.Add(this.checkBox1);
 			this.Controls.Add(this.button1);
 			this.Controls.Add(this.dataGridView1);
 			this.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -103,6 +115,7 @@
 			this.Load += new System.EventHandler(this.FormPacketMessage_Load);
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
 			this.ResumeLayout(false);
+			this.PerformLayout();
 
 		}
 
@@ -113,5 +126,6 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
 		private System.Windows.Forms.Button button1;
+		private System.Windows.Forms.CheckBox checkBox1;
 	}
 }

@@ -1,4 +1,5 @@
-﻿using HslCommunication.Profinet.Siemens;
+﻿using HslCommunication.BasicFramework;
+using HslCommunication.Profinet.Siemens;
 using HslCommunicationDemo.DemoControl;
 using System;
 using System.Collections.Generic;
@@ -45,6 +46,31 @@ namespace HslCommunicationDemo.PLC.Siemens
 							s7Server.AddDbBlock( dbItem.DbNumber );
 					}
 				}
+			}
+		}
+
+		public void LoadDbBlocks( )
+		{
+			if (s7Server == null) return;
+			Dictionary<int, SoftBuffer> dbs = this.s7Server.GetDbBlockBuffer( );
+			if (dbs == null) return;
+
+			foreach(var item in dbs)
+			{
+				if (dbItems.Find( m => m.DbNumber == item.Key ) != null) continue;
+
+				if (item.Key <= 3) continue; // Skip built-in DB1, DB2, DB3
+				DbItem dbItem = new DbItem( )
+				{
+					DbNumber = item.Key,
+					Size = item.Value.Capacity,
+					Name = $"DB{item.Key}",
+					Note = string.Empty
+				};
+				dbItems.Add( dbItem );
+				int rowIndex = dataGridView1.Rows.Add( );
+				DataGridViewRow dgvr = dataGridView1.Rows[rowIndex];
+				SetDgvr( dgvr, rowIndex, dbItem );
 			}
 		}
 
@@ -222,6 +248,9 @@ namespace HslCommunicationDemo.PLC.Siemens
 
 				SetDgvr( dgvr, rowIndex, dataTableItem );
 				count++;
+
+				if (this.dbItems.Find( m => m.DbNumber == dataTableItem.DbNumber ) == null)
+					this.dbItems.Add( dataTableItem );
 			}
 
 			label_row_count.Text = "Rows: " + dataGridView1.RowCount.ToString( );

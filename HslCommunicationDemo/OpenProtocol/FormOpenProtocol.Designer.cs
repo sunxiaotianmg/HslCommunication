@@ -29,6 +29,7 @@
         private void InitializeComponent( )
         {
 			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.userControlHead1 = new HslCommunicationDemo.DemoControl.UserControlHead();
 			this.panel2 = new System.Windows.Forms.Panel();
 			this.panel7 = new System.Windows.Forms.Panel();
@@ -53,11 +54,18 @@
 			this.textBox_read_content = new System.Windows.Forms.TextBox();
 			this.tabPage4 = new System.Windows.Forms.TabPage();
 			this.panel6 = new System.Windows.Forms.Panel();
+			this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+			this.label_sub_time = new System.Windows.Forms.Label();
+			this.label11 = new System.Windows.Forms.Label();
+			this.dataGridView2 = new System.Windows.Forms.DataGridView();
+			this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.textBox_log = new System.Windows.Forms.TextBox();
 			this.checkBox_sub_stop = new System.Windows.Forms.CheckBox();
 			this.label_subscribe_tick = new System.Windows.Forms.Label();
 			this.checkBox_sub_format = new System.Windows.Forms.CheckBox();
-			this.label15 = new System.Windows.Forms.Label();
+			this.label_sub_tick = new System.Windows.Forms.Label();
 			this.tabPage1 = new System.Windows.Forms.TabPage();
 			this.panel8 = new System.Windows.Forms.Panel();
 			this.button_dataParse_delete = new System.Windows.Forms.Button();
@@ -106,6 +114,7 @@
 			this.panel5.SuspendLayout();
 			this.tabPage4.SuspendLayout();
 			this.panel6.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
 			this.tabPage1.SuspendLayout();
 			this.panel8.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -382,26 +391,106 @@
 			// tabPage4
 			// 
 			this.tabPage4.Controls.Add(this.panel6);
-			this.tabPage4.Location = new System.Drawing.Point(4, 22);
+			this.tabPage4.Location = new System.Drawing.Point(4, 26);
 			this.tabPage4.Name = "tabPage4";
 			this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage4.Size = new System.Drawing.Size(659, 303);
+			this.tabPage4.Size = new System.Drawing.Size(659, 299);
 			this.tabPage4.TabIndex = 1;
 			this.tabPage4.Text = "Subscribe";
 			this.tabPage4.UseVisualStyleBackColor = true;
 			// 
 			// panel6
 			// 
+			this.panel6.Controls.Add(this.linkLabel1);
+			this.panel6.Controls.Add(this.label_sub_time);
+			this.panel6.Controls.Add(this.label11);
+			this.panel6.Controls.Add(this.dataGridView2);
 			this.panel6.Controls.Add(this.textBox_log);
 			this.panel6.Controls.Add(this.checkBox_sub_stop);
 			this.panel6.Controls.Add(this.label_subscribe_tick);
 			this.panel6.Controls.Add(this.checkBox_sub_format);
-			this.panel6.Controls.Add(this.label15);
+			this.panel6.Controls.Add(this.label_sub_tick);
 			this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.panel6.Location = new System.Drawing.Point(3, 3);
 			this.panel6.Name = "panel6";
-			this.panel6.Size = new System.Drawing.Size(653, 297);
+			this.panel6.Size = new System.Drawing.Size(653, 293);
 			this.panel6.TabIndex = 0;
+			// 
+			// linkLabel1
+			// 
+			this.linkLabel1.AutoSize = true;
+			this.linkLabel1.Location = new System.Drawing.Point(173, 7);
+			this.linkLabel1.Name = "linkLabel1";
+			this.linkLabel1.Size = new System.Drawing.Size(38, 17);
+			this.linkLabel1.TabIndex = 44;
+			this.linkLabel1.TabStop = true;
+			this.linkLabel1.Text = "Clear";
+			this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+			// 
+			// label_sub_time
+			// 
+			this.label_sub_time.AutoSize = true;
+			this.label_sub_time.ForeColor = System.Drawing.Color.Gray;
+			this.label_sub_time.Location = new System.Drawing.Point(374, 7);
+			this.label_sub_time.Name = "label_sub_time";
+			this.label_sub_time.Size = new System.Drawing.Size(48, 17);
+			this.label_sub_time.TabIndex = 43;
+			this.label_sub_time.Text = "Time：";
+			// 
+			// label11
+			// 
+			this.label11.AutoSize = true;
+			this.label11.Location = new System.Drawing.Point(3, 7);
+			this.label11.Name = "label11";
+			this.label11.Size = new System.Drawing.Size(69, 17);
+			this.label11.TabIndex = 42;
+			this.label11.Text = "Sub Mid：";
+			// 
+			// dataGridView2
+			// 
+			this.dataGridView2.AllowUserToAddRows = false;
+			this.dataGridView2.AllowUserToDeleteRows = false;
+			this.dataGridView2.AllowUserToResizeRows = false;
+			dataGridViewCellStyle1.BackColor = System.Drawing.Color.AliceBlue;
+			this.dataGridView2.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+			this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+			this.dataGridView2.BackgroundColor = System.Drawing.Color.White;
+			this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.Column2,
+            this.Column3});
+			this.dataGridView2.Location = new System.Drawing.Point(3, 33);
+			this.dataGridView2.MultiSelect = false;
+			this.dataGridView2.Name = "dataGridView2";
+			this.dataGridView2.ReadOnly = true;
+			this.dataGridView2.RowHeadersVisible = false;
+			this.dataGridView2.RowTemplate.Height = 23;
+			this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+			this.dataGridView2.Size = new System.Drawing.Size(212, 257);
+			this.dataGridView2.TabIndex = 41;
+			// 
+			// Column1
+			// 
+			this.Column1.HeaderText = "MID";
+			this.Column1.Name = "Column1";
+			this.Column1.ReadOnly = true;
+			this.Column1.Width = 60;
+			// 
+			// Column2
+			// 
+			this.Column2.HeaderText = "Revision";
+			this.Column2.Name = "Column2";
+			this.Column2.ReadOnly = true;
+			this.Column2.Width = 60;
+			// 
+			// Column3
+			// 
+			this.Column3.HeaderText = "Count";
+			this.Column3.Name = "Column3";
+			this.Column3.ReadOnly = true;
+			this.Column3.Width = 70;
 			// 
 			// textBox_log
 			// 
@@ -409,17 +498,17 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.textBox_log.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-			this.textBox_log.Location = new System.Drawing.Point(82, 3);
+			this.textBox_log.Location = new System.Drawing.Point(219, 33);
 			this.textBox_log.Multiline = true;
 			this.textBox_log.Name = "textBox_log";
 			this.textBox_log.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-			this.textBox_log.Size = new System.Drawing.Size(568, 291);
+			this.textBox_log.Size = new System.Drawing.Size(431, 257);
 			this.textBox_log.TabIndex = 36;
 			// 
 			// checkBox_sub_stop
 			// 
 			this.checkBox_sub_stop.AutoSize = true;
-			this.checkBox_sub_stop.Location = new System.Drawing.Point(3, 6);
+			this.checkBox_sub_stop.Location = new System.Drawing.Point(299, 6);
 			this.checkBox_sub_stop.Name = "checkBox_sub_stop";
 			this.checkBox_sub_stop.Size = new System.Drawing.Size(54, 21);
 			this.checkBox_sub_stop.TabIndex = 37;
@@ -431,7 +520,7 @@
 			this.label_subscribe_tick.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.label_subscribe_tick.AutoSize = true;
 			this.label_subscribe_tick.ForeColor = System.Drawing.Color.Gray;
-			this.label_subscribe_tick.Location = new System.Drawing.Point(39, 275);
+			this.label_subscribe_tick.Location = new System.Drawing.Point(39, 271);
 			this.label_subscribe_tick.Name = "label_subscribe_tick";
 			this.label_subscribe_tick.Size = new System.Drawing.Size(13, 17);
 			this.label_subscribe_tick.TabIndex = 40;
@@ -440,31 +529,33 @@
 			// checkBox_sub_format
 			// 
 			this.checkBox_sub_format.AutoSize = true;
-			this.checkBox_sub_format.Location = new System.Drawing.Point(3, 33);
+			this.checkBox_sub_format.Checked = true;
+			this.checkBox_sub_format.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.checkBox_sub_format.Location = new System.Drawing.Point(222, 6);
 			this.checkBox_sub_format.Name = "checkBox_sub_format";
 			this.checkBox_sub_format.Size = new System.Drawing.Size(68, 21);
 			this.checkBox_sub_format.TabIndex = 38;
 			this.checkBox_sub_format.Text = "Format";
 			this.checkBox_sub_format.UseVisualStyleBackColor = true;
 			// 
-			// label15
+			// label_sub_tick
 			// 
-			this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.label15.AutoSize = true;
-			this.label15.ForeColor = System.Drawing.Color.Gray;
-			this.label15.Location = new System.Drawing.Point(3, 275);
-			this.label15.Name = "label15";
-			this.label15.Size = new System.Drawing.Size(43, 17);
-			this.label15.TabIndex = 39;
-			this.label15.Text = "Tick：";
+			this.label_sub_tick.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.label_sub_tick.AutoSize = true;
+			this.label_sub_tick.ForeColor = System.Drawing.Color.Gray;
+			this.label_sub_tick.Location = new System.Drawing.Point(558, 7);
+			this.label_sub_tick.Name = "label_sub_tick";
+			this.label_sub_tick.Size = new System.Drawing.Size(43, 17);
+			this.label_sub_tick.TabIndex = 39;
+			this.label_sub_tick.Text = "Tick：";
 			// 
 			// tabPage1
 			// 
 			this.tabPage1.Controls.Add(this.panel8);
-			this.tabPage1.Location = new System.Drawing.Point(4, 22);
+			this.tabPage1.Location = new System.Drawing.Point(4, 26);
 			this.tabPage1.Name = "tabPage1";
 			this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage1.Size = new System.Drawing.Size(659, 303);
+			this.tabPage1.Size = new System.Drawing.Size(659, 299);
 			this.tabPage1.TabIndex = 2;
 			this.tabPage1.Text = "DataParse";
 			this.tabPage1.UseVisualStyleBackColor = true;
@@ -484,7 +575,7 @@
 			this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.panel8.Location = new System.Drawing.Point(3, 3);
 			this.panel8.Name = "panel8";
-			this.panel8.Size = new System.Drawing.Size(653, 297);
+			this.panel8.Size = new System.Drawing.Size(653, 293);
 			this.panel8.TabIndex = 0;
 			// 
 			// button_dataParse_delete
@@ -557,8 +648,8 @@
 			// 
 			// dataGridView1
 			// 
-			dataGridViewCellStyle1.BackColor = System.Drawing.Color.AliceBlue;
-			this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+			dataGridViewCellStyle2.BackColor = System.Drawing.Color.AliceBlue;
+			this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
 			this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -571,7 +662,7 @@
 			this.dataGridView1.Location = new System.Drawing.Point(131, 29);
 			this.dataGridView1.Name = "dataGridView1";
 			this.dataGridView1.RowTemplate.Height = 23;
-			this.dataGridView1.Size = new System.Drawing.Size(519, 265);
+			this.dataGridView1.Size = new System.Drawing.Size(519, 261);
 			this.dataGridView1.TabIndex = 2;
 			// 
 			// Column_name
@@ -852,6 +943,7 @@
 			this.tabPage4.ResumeLayout(false);
 			this.panel6.ResumeLayout(false);
 			this.panel6.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
 			this.tabPage1.ResumeLayout(false);
 			this.panel8.ResumeLayout(false);
 			this.panel8.PerformLayout();
@@ -894,7 +986,7 @@
 		private System.Windows.Forms.TextBox textBox_log;
 		private System.Windows.Forms.CheckBox checkBox_sub_format;
 		private System.Windows.Forms.Label label_subscribe_tick;
-		private System.Windows.Forms.Label label15;
+		private System.Windows.Forms.Label label_sub_tick;
 		private System.Windows.Forms.CheckBox checkBox1;
         private DemoControl.PipeSelectControl pipeSelectControl1;
         private System.Windows.Forms.CheckBox checkBox2;
@@ -928,5 +1020,12 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn Column_name;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Column_index;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Column_decs;
+		private System.Windows.Forms.DataGridView dataGridView2;
+		private System.Windows.Forms.Label label11;
+		private System.Windows.Forms.Label label_sub_time;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+		private System.Windows.Forms.LinkLabel linkLabel1;
 	}
 }

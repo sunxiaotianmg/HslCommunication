@@ -46,6 +46,7 @@ namespace HslCommunicationDemo.MQTT
 				else
 					textBox_topic_publishSession.Text = string.Empty;
 
+				label_topic_interval.Text = item.PublishIntervalText;
 				string tmp = GetStringFromPayload( item.Message.Payload );
 				if (radioButton_topic_render_json.Checked)
 				{
@@ -70,6 +71,7 @@ namespace HslCommunicationDemo.MQTT
 				textBox_topic_publishSession.Text = string.Empty;
 				textBox_topic_payload.Text = string.Empty;
 				label_topic_size.Text = "0";
+				label_topic_interval.Text = "-";
 			}
 		}
 
@@ -110,6 +112,15 @@ namespace HslCommunicationDemo.MQTT
 				{
 					all_dicts[message.Topic].Session = session;
 					all_dicts[message.Topic].Message = message;
+					TimeSpan ts = DateTime.Now - all_dicts[message.Topic].ReceiveDateTime;
+					if (ts.TotalSeconds < 1)
+					{
+						all_dicts[message.Topic].PublishIntervalText = ts.TotalMilliseconds.ToString( "F0" );
+					}
+					else
+					{
+						all_dicts[message.Topic].PublishIntervalText = SoftBasic.GetTimeSpanDescription( ts );
+					}
 					all_dicts[message.Topic].ReceiveDateTime = DateTime.Now;
 					all_dicts[message.Topic].Count++;
 					currentItem = all_dicts[message.Topic];

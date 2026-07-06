@@ -162,6 +162,7 @@ namespace HslCommunicationDemo
 				userControlReadWriteDevice1.BatchRead.SetReadWriteNet( melsec_net, "D100", string.Empty );
 				userControlReadWriteDevice1.BatchRead.SetReadRandom( melsec_net.ReadRandom, "D100;W100;D500" );
 				userControlReadWriteDevice1.BatchRead.SetReadWordRandom( melsec_net.ReadRandom, "D100;W100;D500" );
+				userControlReadWriteDevice1.BatchRead.SetWriteWordRandom( melsec_net.WriteRandom, "" );
 				// 设置报文读取
 				userControlReadWriteDevice1.MessageRead.SetReadSourceBytes( m => melsec_net.ReadFromCoreServer( m, true, false ), string.Empty, string.Empty );
 

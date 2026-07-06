@@ -75,7 +75,6 @@
 			this.radioButton_async = new System.Windows.Forms.RadioButton();
 			this.button_find_string = new System.Windows.Forms.Button();
 			this.textBox_read_search = new System.Windows.Forms.TextBox();
-			this.checkBox_mask_duplicates = new System.Windows.Forms.CheckBox();
 			this.label17 = new System.Windows.Forms.Label();
 			this.groupBox3 = new System.Windows.Forms.GroupBox();
 			this.label14 = new System.Windows.Forms.Label();
@@ -100,6 +99,8 @@
 			this.textBox4 = new System.Windows.Forms.TextBox();
 			this.label7 = new System.Windows.Forms.Label();
 			this.label6 = new System.Windows.Forms.Label();
+			this.checkBox_mask_duplicates = new System.Windows.Forms.CheckBox();
+			this.groupBox5 = new System.Windows.Forms.GroupBox();
 			this.groupBox2.SuspendLayout();
 			this.groupBox1.SuspendLayout();
 			this.panel2.SuspendLayout();
@@ -158,7 +159,7 @@
 			this.comboBox_write_address.FormattingEnabled = true;
 			this.comboBox_write_address.Location = new System.Drawing.Point(63, 20);
 			this.comboBox_write_address.Name = "comboBox_write_address";
-			this.comboBox_write_address.Size = new System.Drawing.Size(189, 25);
+			this.comboBox_write_address.Size = new System.Drawing.Size(195, 25);
 			this.comboBox_write_address.TabIndex = 42;
 			// 
 			// label21
@@ -214,7 +215,7 @@
 			// 
 			// groupBox4
 			// 
-			this.groupBox4.Location = new System.Drawing.Point(6, 237);
+			this.groupBox4.Location = new System.Drawing.Point(6, 238);
 			this.groupBox4.Name = "groupBox4";
 			this.groupBox4.Size = new System.Drawing.Size(425, 2);
 			this.groupBox4.TabIndex = 31;
@@ -254,16 +255,16 @@
 			this.comboBox_write_Encoding.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.comboBox_write_Encoding.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.comboBox_write_Encoding.FormattingEnabled = true;
-			this.comboBox_write_Encoding.Location = new System.Drawing.Point(346, 205);
+			this.comboBox_write_Encoding.Location = new System.Drawing.Point(348, 205);
 			this.comboBox_write_Encoding.Name = "comboBox_write_Encoding";
-			this.comboBox_write_Encoding.Size = new System.Drawing.Size(84, 25);
+			this.comboBox_write_Encoding.Size = new System.Drawing.Size(82, 25);
 			this.comboBox_write_Encoding.TabIndex = 27;
 			// 
 			// label13
 			// 
 			this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.label13.AutoSize = true;
-			this.label13.Location = new System.Drawing.Point(257, 209);
+			this.label13.Location = new System.Drawing.Point(265, 209);
 			this.label13.Name = "label13";
 			this.label13.Size = new System.Drawing.Size(44, 17);
 			this.label13.TabIndex = 26;
@@ -324,7 +325,7 @@
 			// button_write_hex
 			// 
 			this.button_write_hex.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.button_write_hex.Location = new System.Drawing.Point(257, 173);
+			this.button_write_hex.Location = new System.Drawing.Point(261, 173);
 			this.button_write_hex.Name = "button_write_hex";
 			this.button_write_hex.Size = new System.Drawing.Size(84, 28);
 			this.button_write_hex.TabIndex = 19;
@@ -357,7 +358,7 @@
 			// button_write_float
 			// 
 			this.button_write_float.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.button_write_float.Location = new System.Drawing.Point(257, 142);
+			this.button_write_float.Location = new System.Drawing.Point(261, 142);
 			this.button_write_float.Name = "button_write_float";
 			this.button_write_float.Size = new System.Drawing.Size(84, 28);
 			this.button_write_float.TabIndex = 14;
@@ -379,7 +380,7 @@
 			// button_write_long
 			// 
 			this.button_write_long.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.button_write_long.Location = new System.Drawing.Point(257, 111);
+			this.button_write_long.Location = new System.Drawing.Point(261, 111);
 			this.button_write_long.Name = "button_write_long";
 			this.button_write_long.Size = new System.Drawing.Size(84, 28);
 			this.button_write_long.TabIndex = 12;
@@ -401,7 +402,7 @@
 			// button_write_int
 			// 
 			this.button_write_int.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.button_write_int.Location = new System.Drawing.Point(257, 80);
+			this.button_write_int.Location = new System.Drawing.Point(261, 80);
 			this.button_write_int.Name = "button_write_int";
 			this.button_write_int.Size = new System.Drawing.Size(84, 28);
 			this.button_write_int.TabIndex = 10;
@@ -423,7 +424,7 @@
 			// button_write_short
 			// 
 			this.button_write_short.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.button_write_short.Location = new System.Drawing.Point(257, 49);
+			this.button_write_short.Location = new System.Drawing.Point(261, 49);
 			this.button_write_short.Name = "button_write_short";
 			this.button_write_short.Size = new System.Drawing.Size(84, 28);
 			this.button_write_short.TabIndex = 8;
@@ -445,7 +446,7 @@
 			// button_write_bool
 			// 
 			this.button_write_bool.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.button_write_bool.Location = new System.Drawing.Point(257, 18);
+			this.button_write_bool.Location = new System.Drawing.Point(261, 18);
 			this.button_write_bool.Name = "button_write_bool";
 			this.button_write_bool.Size = new System.Drawing.Size(84, 28);
 			this.button_write_bool.TabIndex = 6;
@@ -473,7 +474,7 @@
 			this.textBox_write_text.Multiline = true;
 			this.textBox_write_text.Name = "textBox_write_text";
 			this.textBox_write_text.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-			this.textBox_write_text.Size = new System.Drawing.Size(188, 79);
+			this.textBox_write_text.Size = new System.Drawing.Size(195, 79);
 			this.textBox_write_text.TabIndex = 5;
 			this.textBox_write_text.Text = "False";
 			// 
@@ -549,6 +550,7 @@
 			this.groupBox1.Controls.Add(this.label7);
 			this.groupBox1.Controls.Add(this.label6);
 			this.groupBox1.Controls.Add(this.checkBox_mask_duplicates);
+			this.groupBox1.Controls.Add(this.groupBox5);
 			this.groupBox1.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
 			this.groupBox1.Location = new System.Drawing.Point(0, 0);
 			this.groupBox1.Name = "groupBox1";
@@ -564,7 +566,7 @@
 			this.comboBox_read_address.FormattingEnabled = true;
 			this.comboBox_read_address.Location = new System.Drawing.Point(63, 22);
 			this.comboBox_read_address.Name = "comboBox_read_address";
-			this.comboBox_read_address.Size = new System.Drawing.Size(189, 25);
+			this.comboBox_read_address.Size = new System.Drawing.Size(203, 25);
 			this.comboBox_read_address.TabIndex = 41;
 			// 
 			// panel2
@@ -659,7 +661,7 @@
 			// button_find_string
 			// 
 			this.button_find_string.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.button_find_string.Location = new System.Drawing.Point(456, 241);
+			this.button_find_string.Location = new System.Drawing.Point(459, 241);
 			this.button_find_string.Name = "button_find_string";
 			this.button_find_string.Size = new System.Drawing.Size(50, 25);
 			this.button_find_string.TabIndex = 29;
@@ -679,18 +681,6 @@
 			this.textBox_read_search.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBox_read_search_MouseClick);
 			this.textBox_read_search.TextChanged += new System.EventHandler(this.textBox_read_search_TextChanged);
 			this.textBox_read_search.Leave += new System.EventHandler(this.textBox_read_search_Leave);
-			// 
-			// checkBox_mask_duplicates
-			// 
-			this.checkBox_mask_duplicates.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.checkBox_mask_duplicates.AutoSize = true;
-			this.checkBox_mask_duplicates.ForeColor = System.Drawing.Color.Gray;
-			this.checkBox_mask_duplicates.Location = new System.Drawing.Point(268, 244);
-			this.checkBox_mask_duplicates.Name = "checkBox_mask_duplicates";
-			this.checkBox_mask_duplicates.Size = new System.Drawing.Size(99, 21);
-			this.checkBox_mask_duplicates.TabIndex = 27;
-			this.checkBox_mask_duplicates.Text = "屏蔽重复的值";
-			this.checkBox_mask_duplicates.UseVisualStyleBackColor = true;
 			// 
 			// label17
 			// 
@@ -746,7 +736,7 @@
 			this.comboBox_read_encoding.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.comboBox_read_encoding.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.comboBox_read_encoding.FormattingEnabled = true;
-			this.comboBox_read_encoding.Location = new System.Drawing.Point(419, 205);
+			this.comboBox_read_encoding.Location = new System.Drawing.Point(424, 208);
 			this.comboBox_read_encoding.Name = "comboBox_read_encoding";
 			this.comboBox_read_encoding.Size = new System.Drawing.Size(84, 25);
 			this.comboBox_read_encoding.TabIndex = 22;
@@ -755,7 +745,7 @@
 			// 
 			this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.label12.AutoSize = true;
-			this.label12.Location = new System.Drawing.Point(325, 209);
+			this.label12.Location = new System.Drawing.Point(334, 212);
 			this.label12.Name = "label12";
 			this.label12.Size = new System.Drawing.Size(44, 17);
 			this.label12.TabIndex = 21;
@@ -764,7 +754,7 @@
 			// textBox1
 			// 
 			this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.textBox1.Location = new System.Drawing.Point(369, 177);
+			this.textBox1.Location = new System.Drawing.Point(378, 181);
 			this.textBox1.Name = "textBox1";
 			this.textBox1.Size = new System.Drawing.Size(41, 23);
 			this.textBox1.TabIndex = 19;
@@ -774,7 +764,7 @@
 			// 
 			this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.label8.AutoSize = true;
-			this.label8.Location = new System.Drawing.Point(325, 180);
+			this.label8.Location = new System.Drawing.Point(334, 184);
 			this.label8.Name = "label8";
 			this.label8.Size = new System.Drawing.Size(44, 17);
 			this.label8.TabIndex = 20;
@@ -783,7 +773,7 @@
 			// textBox5
 			// 
 			this.textBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.textBox5.Location = new System.Drawing.Point(258, 23);
+			this.textBox5.Location = new System.Drawing.Point(269, 23);
 			this.textBox5.Name = "textBox5";
 			this.textBox5.Size = new System.Drawing.Size(64, 23);
 			this.textBox5.TabIndex = 18;
@@ -792,7 +782,7 @@
 			// button_read_string
 			// 
 			this.button_read_string.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.button_read_string.Location = new System.Drawing.Point(419, 174);
+			this.button_read_string.Location = new System.Drawing.Point(424, 178);
 			this.button_read_string.Name = "button_read_string";
 			this.button_read_string.Size = new System.Drawing.Size(84, 28);
 			this.button_read_string.TabIndex = 16;
@@ -803,7 +793,7 @@
 			// button_read_double
 			// 
 			this.button_read_double.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.button_read_double.Location = new System.Drawing.Point(419, 144);
+			this.button_read_double.Location = new System.Drawing.Point(424, 144);
 			this.button_read_double.Name = "button_read_double";
 			this.button_read_double.Size = new System.Drawing.Size(84, 28);
 			this.button_read_double.TabIndex = 15;
@@ -814,7 +804,7 @@
 			// button_read_float
 			// 
 			this.button_read_float.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.button_read_float.Location = new System.Drawing.Point(328, 144);
+			this.button_read_float.Location = new System.Drawing.Point(337, 144);
 			this.button_read_float.Name = "button_read_float";
 			this.button_read_float.Size = new System.Drawing.Size(84, 28);
 			this.button_read_float.TabIndex = 14;
@@ -825,7 +815,7 @@
 			// button_read_ulong
 			// 
 			this.button_read_ulong.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.button_read_ulong.Location = new System.Drawing.Point(419, 113);
+			this.button_read_ulong.Location = new System.Drawing.Point(424, 113);
 			this.button_read_ulong.Name = "button_read_ulong";
 			this.button_read_ulong.Size = new System.Drawing.Size(84, 28);
 			this.button_read_ulong.TabIndex = 13;
@@ -836,7 +826,7 @@
 			// button_read_long
 			// 
 			this.button_read_long.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.button_read_long.Location = new System.Drawing.Point(328, 113);
+			this.button_read_long.Location = new System.Drawing.Point(337, 113);
 			this.button_read_long.Name = "button_read_long";
 			this.button_read_long.Size = new System.Drawing.Size(84, 28);
 			this.button_read_long.TabIndex = 12;
@@ -847,7 +837,7 @@
 			// button_read_uint
 			// 
 			this.button_read_uint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.button_read_uint.Location = new System.Drawing.Point(419, 82);
+			this.button_read_uint.Location = new System.Drawing.Point(424, 82);
 			this.button_read_uint.Name = "button_read_uint";
 			this.button_read_uint.Size = new System.Drawing.Size(84, 28);
 			this.button_read_uint.TabIndex = 11;
@@ -858,7 +848,7 @@
 			// button_read_int
 			// 
 			this.button_read_int.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.button_read_int.Location = new System.Drawing.Point(328, 82);
+			this.button_read_int.Location = new System.Drawing.Point(337, 82);
 			this.button_read_int.Name = "button_read_int";
 			this.button_read_int.Size = new System.Drawing.Size(84, 28);
 			this.button_read_int.TabIndex = 10;
@@ -869,7 +859,7 @@
 			// button_read_ushort
 			// 
 			this.button_read_ushort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.button_read_ushort.Location = new System.Drawing.Point(419, 51);
+			this.button_read_ushort.Location = new System.Drawing.Point(424, 51);
 			this.button_read_ushort.Name = "button_read_ushort";
 			this.button_read_ushort.Size = new System.Drawing.Size(84, 28);
 			this.button_read_ushort.TabIndex = 9;
@@ -880,7 +870,7 @@
 			// button_read_short
 			// 
 			this.button_read_short.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.button_read_short.Location = new System.Drawing.Point(328, 51);
+			this.button_read_short.Location = new System.Drawing.Point(337, 51);
 			this.button_read_short.Name = "button_read_short";
 			this.button_read_short.Size = new System.Drawing.Size(84, 28);
 			this.button_read_short.TabIndex = 8;
@@ -891,7 +881,7 @@
 			// button_read_byte
 			// 
 			this.button_read_byte.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.button_read_byte.Location = new System.Drawing.Point(419, 20);
+			this.button_read_byte.Location = new System.Drawing.Point(424, 20);
 			this.button_read_byte.Name = "button_read_byte";
 			this.button_read_byte.Size = new System.Drawing.Size(84, 28);
 			this.button_read_byte.TabIndex = 7;
@@ -902,7 +892,7 @@
 			// button_read_bool
 			// 
 			this.button_read_bool.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.button_read_bool.Location = new System.Drawing.Point(328, 20);
+			this.button_read_bool.Location = new System.Drawing.Point(337, 20);
 			this.button_read_bool.Name = "button_read_bool";
 			this.button_read_bool.Size = new System.Drawing.Size(84, 28);
 			this.button_read_bool.TabIndex = 6;
@@ -918,7 +908,7 @@
 			this.textBox4.Multiline = true;
 			this.textBox4.Name = "textBox4";
 			this.textBox4.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-			this.textBox4.Size = new System.Drawing.Size(259, 181);
+			this.textBox4.Size = new System.Drawing.Size(270, 181);
 			this.textBox4.TabIndex = 5;
 			// 
 			// label7
@@ -938,6 +928,27 @@
 			this.label6.Size = new System.Drawing.Size(44, 17);
 			this.label6.TabIndex = 2;
 			this.label6.Text = "地址：";
+			// 
+			// checkBox_mask_duplicates
+			// 
+			this.checkBox_mask_duplicates.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.checkBox_mask_duplicates.AutoSize = true;
+			this.checkBox_mask_duplicates.ForeColor = System.Drawing.Color.Gray;
+			this.checkBox_mask_duplicates.Location = new System.Drawing.Point(268, 244);
+			this.checkBox_mask_duplicates.Name = "checkBox_mask_duplicates";
+			this.checkBox_mask_duplicates.Size = new System.Drawing.Size(99, 21);
+			this.checkBox_mask_duplicates.TabIndex = 27;
+			this.checkBox_mask_duplicates.Text = "屏蔽重复的值";
+			this.checkBox_mask_duplicates.UseVisualStyleBackColor = true;
+			// 
+			// groupBox5
+			// 
+			this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.groupBox5.Location = new System.Drawing.Point(339, 172);
+			this.groupBox5.Name = "groupBox5";
+			this.groupBox5.Size = new System.Drawing.Size(170, 5);
+			this.groupBox5.TabIndex = 42;
+			this.groupBox5.TabStop = false;
 			// 
 			// UserControlReadWriteOp
 			// 
@@ -1033,5 +1044,6 @@
 		private System.Windows.Forms.RadioButton radioButton_read_bit;
 		private System.Windows.Forms.ComboBox comboBox_read_address;
 		private System.Windows.Forms.ComboBox comboBox_write_address;
+		private System.Windows.Forms.GroupBox groupBox5;
 	}
 }

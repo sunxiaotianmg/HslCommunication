@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Net.Mime;
+using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -26,6 +27,56 @@ namespace HslCommunicationDemo
 			string tip = "额外的mid数组，如果你得用于订阅返回的mid大于421，例如 1000,1010  也可以指定返回 1000-1003,2000-2005";
 			if (Program.Language == 2) tip = "Additional mid array: if the mid used for subscription returns is greater than 421, such as 1000, 1010, you can also specify return ranges like 1000-1003, 2000-2005.";
 			this.toolTip.SetToolTip( label_sub_mid, tip );
+
+			this.sub_timer = new Timer( );
+			this.sub_timer.Interval = 200;
+			this.sub_timer.Tick += Sub_timer_Tick;
+			this.sub_timer.Start( );
+
+			this.dataGridView2.CellMouseClick += DataGridView2_CellMouseClick;
+		}
+
+		private void DataGridView2_CellMouseClick( object sender, DataGridViewCellMouseEventArgs e )
+		{
+			if (e.Button == MouseButtons.Left)
+			{
+				if (e.RowIndex < 0 || e.ColumnIndex < 0) return;
+				if (e.RowIndex < dataGridView2.Rows.Count)
+				{
+					string mid = dataGridView2.Rows[e.RowIndex].Cells[0].Value as string;
+					if (string.IsNullOrEmpty( mid )) return;
+
+					this.selectSubMidMessage = mid;
+					if (this.subOpenMessages.ContainsKey( mid ))
+					{
+						RenderSubMessageItem( this.subOpenMessages[mid] );
+					}
+				}
+			}
+		}
+		private void Sub_timer_Tick( object sender, EventArgs e )
+		{
+			if (this.sub_tick > 0)
+			{
+				foreach (SubOpenProtocolMessage message in this.subOpenMessages.Values)
+				{
+					RenderSubOpenMessage( message.Row, message );
+				}
+
+				label_sub_tick.Text = "Tick: " + sub_tick.ToString( );
+			}
+		}
+
+		private void RenderSubOpenMessage( DataGridViewRow row, SubOpenProtocolMessage message )
+		{
+			if (message == null) return;
+			row.Cells[0].Value = message.Mid;
+			row.Cells[1].Value = message.Revision;
+			row.Cells[2].Value = message.ReceiveCount;
+
+			row.Tag = message;
+
+			//label_sub_time.Text = message.Time.ToString( ) + " :  Length: " + message.Message.Content.Length;
 		}
 
 		private void Button1_Click( object sender, EventArgs e )
@@ -94,22 +145,60 @@ namespace HslCommunicationDemo
 			}
 		}
 
+		private void RenderSubMessageItem( SubOpenProtocolMessage message )
+		{
+			if (!checkBox_sub_stop.Checked)
+			{
+				label_sub_time.Text = "Time:" + message.Time.ToString( ) + " :  Length: " + message.Message.Content.Length;
+				if (checkBox_sub_format.Checked)
+				{
+					textBox_log.Text = GetRenderOpenMessage( message.Message.Content );
+				}
+				else
+				{
+					textBox_log.Text = message.Message.Content;
+				}
+			}
+		}
+
+
 		private void OpenProtocol_ReceivedMessage( object sender, OpenEventArgs e )
 		{
 			this.Invoke( new Action( ( ) =>
 			{
 				System.Threading.Interlocked.Increment( ref sub_tick );
-				label_subscribe_tick.Text = sub_tick.ToString( );
 
-				if (!checkBox_sub_stop.Checked)
+				string mid = e.Content.Substring( 4, 4 );
+				string revision = e.Content.Length >= 11 ? e.Content.Substring( 8, 3 ) : "";
+
+				if (string.IsNullOrEmpty( mid )) return;
+				if (subOpenMessages.ContainsKey(mid))
 				{
-					if (checkBox_sub_format.Checked)
+					subOpenMessages[mid].Revision = revision;
+					subOpenMessages[mid].ReceiveCount++;
+					subOpenMessages[mid].Time = DateTime.Now;
+					subOpenMessages[mid].Message = e;
+				}
+				else
+				{
+					int rowIndex = dataGridView2.Rows.Add( );
+					subOpenMessages.Add( mid, new SubOpenProtocolMessage( )
 					{
-						textBox_log.Text = DateTime.Now.ToString( ) + " :               Length: " + e.Content.Length + Environment.NewLine + Environment.NewLine + GetRenderOpenMessage( e.Content );
-					}
-					else
+						Mid = mid,
+						Revision = revision,
+						ReceiveCount = 1,
+						Message = e,
+						Time = DateTime.Now,
+						Row = dataGridView2.Rows[rowIndex]
+					} );
+				}
+
+				// 更新的是，定时更新，不再直接操作控件更新
+				if (!string.IsNullOrEmpty(this.selectSubMidMessage))
+				{
+					if (this.selectSubMidMessage == mid)
 					{
-						textBox_log.AppendText( DateTime.Now.ToString( ) + " : " + e.Content + Environment.NewLine );
+						RenderSubMessageItem( subOpenMessages[mid] );
 					}
 				}
 			} ) );
@@ -120,6 +209,9 @@ namespace HslCommunicationDemo
 		private OpenProtocolNet openProtocol = null;
 		private CodeExampleControl codeExampleControl;
 		private ToolTip toolTip;
+		private Dictionary<string, SubOpenProtocolMessage> subOpenMessages = new Dictionary<string, SubOpenProtocolMessage>( );
+		private string selectSubMidMessage = "";
+		private System.Windows.Forms.Timer sub_timer = null;
 
 		private void FormOpenProtocol_Load( object sender, EventArgs e )
 		{
@@ -206,6 +298,17 @@ namespace HslCommunicationDemo
 			codeExampleControl = new CodeExampleControl( );
 			DemoUtils.AddSpecialFunctionTab( this.tabControl2, codeExampleControl, false, CodeExampleControl.GetTitle( ) );
 			codeExampleControl.ShowTextBox( true );
+
+			if (Program.Language == 1)
+			{
+				tabPage1.Text = "数据解析规则";
+				tabPage3.Text = "读取结果";
+				tabPage4.Text = "订阅信息";
+				label11.Text = "已经订阅的MID:";
+				linkLabel1.Text = "清除";
+				checkBox_sub_format.Text = "格式化";
+				checkBox_sub_stop.Text = "暂停显示";
+			}
 		}
 
 		private void TreeView1_AfterSelect( object sender, TreeViewEventArgs e )
@@ -632,6 +735,14 @@ namespace HslCommunicationDemo
 				}
 			}
 		}
+
+		private void linkLabel1_LinkClicked( object sender, LinkLabelLinkClickedEventArgs e )
+		{
+			// 清除当前的列表信息
+			this.subOpenMessages.Clear( );
+			this.dataGridView2.Rows.Clear( );
+			this.selectSubMidMessage = "";
+		}
 	}
 
 	public class OpenMessage
@@ -741,5 +852,20 @@ namespace HslCommunicationDemo
 			}
 			return $"{Name}[{DataIndex}]{Decs}";
 		}
+	}
+
+	public class SubOpenProtocolMessage
+	{
+		public string Mid { get; set; }
+
+		public string Revision { get; set; }
+
+		public long ReceiveCount { get; set; }
+
+		public OpenEventArgs Message { get; set; }
+
+		public DateTime Time { get; set; }
+
+		public DataGridViewRow Row { get; set; }
 	}
 }

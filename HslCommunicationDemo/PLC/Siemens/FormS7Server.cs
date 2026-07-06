@@ -23,6 +23,13 @@ namespace HslCommunicationDemo
 			DemoUtils.SetPanelAnchor( panel1, panel2 );
 
 			checkBox_log_analysis.CheckedChanged += CheckBox_log_analysis_CheckedChanged;
+			this.userControlReadWriteServer1.OnServerDataLoaded += UserControlReadWriteServer1_OnServerDataLoaded;
+		}
+
+		private void UserControlReadWriteServer1_OnServerDataLoaded( object sender, EventArgs e )
+		{
+			// 重新加载数据
+			dbControl.LoadDbBlocks( );
 		}
 
 		private void CheckBox_log_analysis_CheckedChanged( object sender, EventArgs e )
@@ -87,7 +94,6 @@ namespace HslCommunicationDemo
 		{
 			try
 			{
-
 				s7NetServer = new HslCommunication.Profinet.Siemens.SiemensS7Server( );                       // 实例化对象
 				s7NetServer.ActiveTimeSpan = TimeSpan.FromHours( 1 );
 				s7NetServer.AnalysisLogMessage = checkBox_log_analysis.Checked;
@@ -173,6 +179,11 @@ namespace HslCommunicationDemo
 		private void userControlHead1_SaveConnectEvent_1( object sender, EventArgs e )
 		{
 			userControlHead1_SaveConnectEvent( sender, e );
+		}
+
+		private void userControlReadWriteServer1_Load( object sender, EventArgs e )
+		{
+
 		}
 	}
 }

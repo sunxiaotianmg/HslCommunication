@@ -47,6 +47,9 @@ namespace HslCommunicationDemo
 			}
 
 			Language( Program.Language );
+
+			comboBox_handshake.DataSource = SoftBasic.GetEnumValues<Handshake>( );
+			comboBox_handshake.SelectedIndex = 0;
 		}
 
 		private void Language( int language )
@@ -61,6 +64,7 @@ namespace HslCommunicationDemo
 				label24.Text = "奇偶：";
 				button1.Text = "打开串口";
 				button2.Text = "关闭串口";
+				label6.Text = "控制流";
 				comboBox_Parity.DataSource = new string[] { "无", "奇", "偶" };
 			}
 			else
@@ -76,6 +80,7 @@ namespace HslCommunicationDemo
 				label8.Text = "Pwd:";
 				label2.Text = "Topic:";
 				label9.Text = "Name:";
+				label6.Text = "Hand:";
 				checkBox_useMqtt.Text = "Use MQTT";
 				comboBox_Parity.DataSource = new string[] { "None", "Odd", "Even" };
 				checkBox1.Text = "Go to Dtu?";
@@ -135,6 +140,7 @@ namespace HslCommunicationDemo
 			SP_ReadData.StopBits = stopBits == 0 ? StopBits.None : (stopBits == 1 ? StopBits.One : StopBits.Two);
 			SP_ReadData.Parity = comboBox_Parity.SelectedIndex == 0 ? Parity.None : (comboBox_Parity.SelectedIndex == 1 ? Parity.Odd : Parity.Even);
 			SP_ReadData.RtsEnable = checkBox5.Checked;
+			SP_ReadData.Handshake = (Handshake)comboBox_handshake.SelectedItem;
 
 			try
 			{
@@ -235,6 +241,7 @@ namespace HslCommunicationDemo
 			element.SetAttributeValue( DemoDeviceList.XmlParity, comboBox_Parity.SelectedIndex );
 			element.SetAttributeValue( DemoDeviceList.XmlDataFormat, comboBox_portName.SelectedIndex );
 			element.SetAttributeValue( DemoDeviceList.XmlRtsEnable, checkBox5.Checked );
+			element.SetAttributeValue( "Handshake", comboBox_handshake.SelectedIndex );
 
 			element.SetAttributeValue( "UseMqtt", checkBox_useMqtt.Checked );
 			element.SetAttributeValue( "MqttIP", textBox_mqtt_ip.Text );
@@ -257,6 +264,7 @@ namespace HslCommunicationDemo
 			comboBox_Parity.SelectedIndex = int.Parse( element.Attribute( DemoDeviceList.XmlParity ).Value );
 			comboBox_portName.SelectedIndex = int.Parse( element.Attribute( DemoDeviceList.XmlDataFormat ).Value );
 			checkBox5.Checked = bool.Parse( element.Attribute( DemoDeviceList.XmlRtsEnable ).Value );
+			comboBox_handshake.SelectedIndex = GetXmlValue( element, "Handshake", 0, int.Parse );
 
 			checkBox_useMqtt.Checked = GetXmlValue( element, "UseMqtt", false, bool.Parse );
 			textBox_mqtt_ip.Text = GetXmlValue( element,     "MqttIP", "", m => m );

@@ -45,6 +45,34 @@ namespace HslCommunicationDemo.Vip
 			textBox_From.Text = company;
 		}
 
+		public void ClearInput( )
+		{
+			textBox_To.Text = "";
+			textBox_NotBefore.Text = DateTime.Now.ToString( "yyyy-MM-dd" );
+			textBox_NotAfter.Text = DateTime.Now.AddYears( 1 ).ToString( "yyyy-MM-dd" );
+			textBox_createDate.Text = DateTime.Now.ToString( "yyyy-MM-dd" );
+			textBox_hours.Text = "-1";
+			textBox_Descriptions.Text = "";
+			textBox_group.Text = "";
+		}
+
+		public void SetGroup( string group )
+		{
+			textBox_group.Text = group;
+		}
+
+		/// <summary>
+		/// 设置编程语言，0，就是C#，1就是java
+		/// </summary>
+		/// <param name="language"></param>
+		public void SetLanguage( int language )
+		{
+			if (language == 0)
+				radioButton_dotnet.Checked = true;
+			else
+				radioButton_java.Checked = true;
+		}
+
 		public void RenderHslCertificate( CertificateItem cert )
 		{
 			this.certificateItem = cert;
@@ -68,17 +96,24 @@ namespace HslCommunicationDemo.Vip
 			StringBuilder descriptions = new StringBuilder( );
 			foreach (var item in certificate.Descriptions)
 			{
-				descriptions.AppendLine( $"{item.Key}:{item.Value}" );
-				if (item.Key.Equals( "语言", StringComparison.OrdinalIgnoreCase ))
+				if (item.Key.Equals( "Group", StringComparison.OrdinalIgnoreCase ))
 				{
-					if (item.Value.Equals( "DotNet", StringComparison.OrdinalIgnoreCase ))
-						radioButton_dotnet.Checked = true;
-					else
-						radioButton_java.Checked = true;
+					textBox_group.Text = item.Value;
+				}
+				else
+				{
+					descriptions.AppendLine( $"{item.Key}:{item.Value}" );
+					if (item.Key.Equals( "语言", StringComparison.OrdinalIgnoreCase ))
+					{
+						if (item.Value.Equals( "DotNet", StringComparison.OrdinalIgnoreCase ))
+							radioButton_dotnet.Checked = true;
+						else
+							radioButton_java.Checked = true;
+					}
 				}
 			}
 			textBox_Descriptions.Text = descriptions.ToString( );
-
+			if (!certificate.Descriptions.ContainsKey( "Group" )) textBox_group.Text = "";
 
 			// 查看模式下
 			if (editMode) SetEditMode( false );
@@ -94,6 +129,7 @@ namespace HslCommunicationDemo.Vip
 			textBox_Descriptions.ReadOnly = readOnly;
 			radioButton_dotnet.Enabled = !readOnly;
 			radioButton_java.Enabled = !readOnly;
+			textBox_group.ReadOnly = readOnly;
 		}
 
 		public void SetRpcClient( MqttSyncClient rpc )
@@ -171,15 +207,16 @@ namespace HslCommunicationDemo.Vip
 			}
 
 			OperateResult<string> createCert = rpc.ReadRpc<string>( radioButton_dotnet.Checked ? "CreateDotNetCertificate" : "CreateJavaCertificate",
-				new { userName = textBox_To.Text, startDate = textBox_NotBefore.Text, finishDate = textBox_NotAfter.Text, hours = int.Parse( textBox_hours.Text ), unique = textBox_Unique.Text, keyValues = textBox_Descriptions.Lines } );
+				new { userName = textBox_To.Text, startDate = textBox_NotBefore.Text, finishDate = textBox_NotAfter.Text, hours = int.Parse( textBox_hours.Text ), unique = textBox_Unique.Text, 
+					keyValues = textBox_Descriptions.Lines, group = textBox_group.Text } );
 
 			if (createCert.IsSuccess)
 			{
 				Clipboard.SetText( createCert.Content );
 				if (Program.Language == 1)
-					DemoUtils.ShowMessage( "创建证书成功，已经复制到剪贴板\r\n\r\n" + createCert.Content );
+					DemoUtils.ShowMessage( "创建证书成功，列表请刷新，证书内容已经复制到剪贴板\r\n\r\n" + createCert.Content );
 				else
-					DemoUtils.ShowMessage( "Create Certificate Success! Ctrl+V to Get String: \r\n\r\n" + createCert.Content );
+					DemoUtils.ShowMessage( "Create Certificate Success! please refreshlist, Ctrl+V to Get String: \r\n\r\n" + createCert.Content );
 			}
 			else
 			{

@@ -50,6 +50,7 @@ namespace HslCommunicationDemo
 				IpAddress = "118.195.180.167",
 				Port = 7790,
 				UseRSAProvider = true,
+				ConnectTimeout = 10_000
 			} );
 
 

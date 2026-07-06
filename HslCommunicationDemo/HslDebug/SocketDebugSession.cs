@@ -103,6 +103,11 @@ namespace HslCommunicationDemo.HslDebug
 		public byte[] Buffer { get; set; }
 
 		/// <summary>
+		/// 自动返回的索引信息，主要用于服务器端的自动返回数据使用
+		/// </summary>
+		public int AutoReturnIndex { get; set; } = 0;
+
+		/// <summary>
 		/// 将数据发送到会话中去
 		/// </summary>
 		/// <param name="data"></param>

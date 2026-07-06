@@ -41,6 +41,9 @@
 			this.panel3 = new System.Windows.Forms.Panel();
 			this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.添加分类ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.添加证书ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
@@ -48,6 +51,7 @@
 			this.panel2.SuspendLayout();
 			this.panel3.SuspendLayout();
 			this.contextMenuStrip1.SuspendLayout();
+			this.contextMenuStrip2.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// treeView1
@@ -64,7 +68,7 @@
 			this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode1,
             treeNode2});
-			this.treeView1.Size = new System.Drawing.Size(232, 572);
+			this.treeView1.Size = new System.Drawing.Size(246, 572);
 			this.treeView1.TabIndex = 0;
 			this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
 			this.treeView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.treeView1_MouseClick);
@@ -74,14 +78,14 @@
 			this.label1.AutoSize = true;
 			this.label1.Location = new System.Drawing.Point(8, 6);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(59, 17);
+			this.label1.Size = new System.Drawing.Size(175, 17);
 			this.label1.TabIndex = 1;
-			this.label1.Text = "证书列表:";
+			this.label1.Text = "证书列表:(支持分类，右键菜单)";
 			// 
 			// button_refresh_cert
 			// 
 			this.button_refresh_cert.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-			this.button_refresh_cert.Location = new System.Drawing.Point(176, 1);
+			this.button_refresh_cert.Location = new System.Drawing.Point(190, 1);
 			this.button_refresh_cert.Name = "button_refresh_cert";
 			this.button_refresh_cert.Size = new System.Drawing.Size(62, 26);
 			this.button_refresh_cert.TabIndex = 3;
@@ -97,7 +101,7 @@
 			this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.panel1.Location = new System.Drawing.Point(3, 30);
 			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(721, 572);
+			this.panel1.Size = new System.Drawing.Size(707, 572);
 			this.panel1.TabIndex = 26;
 			// 
 			// button_new
@@ -124,18 +128,18 @@
 			// 
 			this.splitContainer1.Panel2.Controls.Add(this.panel3);
 			this.splitContainer1.Size = new System.Drawing.Size(971, 605);
-			this.splitContainer1.SplitterDistance = 240;
+			this.splitContainer1.SplitterDistance = 254;
 			this.splitContainer1.TabIndex = 28;
 			// 
 			// panel2
 			// 
+			this.panel2.Controls.Add(this.button_refresh_cert);
 			this.panel2.Controls.Add(this.label1);
 			this.panel2.Controls.Add(this.treeView1);
-			this.panel2.Controls.Add(this.button_refresh_cert);
 			this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.panel2.Location = new System.Drawing.Point(0, 0);
 			this.panel2.Name = "panel2";
-			this.panel2.Size = new System.Drawing.Size(240, 605);
+			this.panel2.Size = new System.Drawing.Size(254, 605);
 			this.panel2.TabIndex = 0;
 			// 
 			// panel3
@@ -145,7 +149,7 @@
 			this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.panel3.Location = new System.Drawing.Point(0, 0);
 			this.panel3.Name = "panel3";
-			this.panel3.Size = new System.Drawing.Size(727, 605);
+			this.panel3.Size = new System.Drawing.Size(713, 605);
 			this.panel3.TabIndex = 1;
 			// 
 			// contextMenuStrip1
@@ -161,6 +165,26 @@
 			this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
 			this.deleteToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
 			this.deleteToolStripMenuItem.Text = "删除证书";
+			// 
+			// contextMenuStrip2
+			// 
+			this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.添加分类ToolStripMenuItem,
+            this.添加证书ToolStripMenuItem});
+			this.contextMenuStrip2.Name = "contextMenuStrip2";
+			this.contextMenuStrip2.Size = new System.Drawing.Size(125, 48);
+			// 
+			// 添加分类ToolStripMenuItem
+			// 
+			this.添加分类ToolStripMenuItem.Name = "添加分类ToolStripMenuItem";
+			this.添加分类ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+			this.添加分类ToolStripMenuItem.Text = "添加分类";
+			// 
+			// 添加证书ToolStripMenuItem
+			// 
+			this.添加证书ToolStripMenuItem.Name = "添加证书ToolStripMenuItem";
+			this.添加证书ToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+			this.添加证书ToolStripMenuItem.Text = "添加证书";
 			// 
 			// FormCreateCertificate
 			// 
@@ -181,6 +205,7 @@
 			this.panel2.PerformLayout();
 			this.panel3.ResumeLayout(false);
 			this.contextMenuStrip1.ResumeLayout(false);
+			this.contextMenuStrip2.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -197,5 +222,8 @@
 		private System.Windows.Forms.Panel panel3;
 		private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
 		private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
+		private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
+		private System.Windows.Forms.ToolStripMenuItem 添加分类ToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem 添加证书ToolStripMenuItem;
 	}
 }

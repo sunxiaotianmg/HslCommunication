@@ -109,6 +109,7 @@
 			this.userControlReadWriteServer1.Name = "userControlReadWriteServer1";
 			this.userControlReadWriteServer1.Size = new System.Drawing.Size(990, 531);
 			this.userControlReadWriteServer1.TabIndex = 0;
+			this.userControlReadWriteServer1.Load += new System.EventHandler(this.userControlReadWriteServer1_Load);
 			// 
 			// userControlHead1
 			// 

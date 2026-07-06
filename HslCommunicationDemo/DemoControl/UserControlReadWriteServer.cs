@@ -34,6 +34,10 @@ namespace HslCommunicationDemo.DemoControl
 		private List<UserControl> allControls = new List<UserControl>( );
 		private string regexFilter = string.Empty;
 		private string deviceName = "server";
+		/// <summary>
+		/// 当服务器的数据池加载完成的时候触发的事件
+		/// </summary>
+		public event EventHandler OnServerDataLoaded;
 
 		public void SetReadWriteServerLog( DeviceServer dataServerBase )
 		{
@@ -204,6 +208,7 @@ namespace HslCommunicationDemo.DemoControl
 								DemoUtils.ShowMessage( "Load data finish" );
 
 								textBox_others_code.Text = $"server.LoadDataPool( @\"{ofd.FileName}\" );";
+								OnServerDataLoaded?.Invoke( this, new EventArgs( ) );
 							}
 							catch (Exception ex)
 							{

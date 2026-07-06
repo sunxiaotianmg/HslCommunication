@@ -939,6 +939,11 @@ namespace HslCommunicationDemo
 		public long Count { get; set; }
 
 		/// <summary>
+		/// 发布的间隔时间说明
+		/// </summary>
+		public string PublishIntervalText { get; set; }
+
+		/// <summary>
 		/// 显示的行信息
 		/// </summary>
 		public DataGridViewRow ViewRow { get; set; }
